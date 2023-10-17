@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Avalonia.Data;
 using Avalonia.Media.Transformation;
 
@@ -30,6 +31,12 @@ public partial class ZoomBorder
     /// </summary>
     public static readonly StyledProperty<double> ZoomSpeedProperty =
         AvaloniaProperty.Register<ZoomBorder, double>(nameof(ZoomSpeed), 1.2, false, BindingMode.TwoWay);
+
+    /// <summary>
+    /// Identifies the <seealso cref="ZoomPercentages"/> avalonia property.
+    /// </summary>
+    public static readonly StyledProperty<double[]> ZoomPercentagesProperty =
+        AvaloniaProperty.Register<ZoomBorder, double[]>(nameof(ZoomPercentages), null, false, BindingMode.TwoWay);
 
     /// <summary>
     /// Identifies the <seealso cref="PowerFactor"/> avalonia property.
@@ -185,6 +192,7 @@ public partial class ZoomBorder
     private double _offsetX = 0.0;
     private double _offsetY = 0.0;
     private bool _captured = false;
+    private int _currentZoom = 0;
 
     /// <summary>
     /// Zoom changed event.
@@ -207,6 +215,25 @@ public partial class ZoomBorder
     {
         get => GetValue(ZoomSpeedProperty);
         set => SetValue(ZoomSpeedProperty, value);
+    }
+
+    /// <summary>
+    /// Gets or sets Zoom Percentages
+    /// </summary>
+    public double[] ZoomPercentages
+    {
+        get => GetValue(ZoomPercentagesProperty);
+        set
+        {
+            SetValue(ZoomPercentagesProperty, value);
+            for (int i = 0; i < ZoomPercentages.Length; i++)
+            {
+                if (ZoomPercentages[i] == 1)
+                {
+                    _currentZoom = i;
+                }
+            }
+        }
     }
 
     /// <summary>

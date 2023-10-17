@@ -472,7 +472,23 @@ public partial class ZoomBorder : Border
     public void ZoomDeltaTo(double delta, double x, double y, bool skipTransitions = false)
     {
         double realDelta = Sign(delta) * Pow(Abs(delta), PowerFactor);
-        ZoomTo(Pow(ZoomSpeed, realDelta), x, y, skipTransitions || Abs(realDelta) <= TransitionThreshold);
+        if(ZoomPercentages != null)
+        {
+            if (delta < 0 && _currentZoom > 0)
+            {
+                _currentZoom--;
+                Zoom(ZoomPercentages[_currentZoom], x, y, skipTransitions || Abs(realDelta) <= TransitionThreshold);
+            } 
+            else if(delta > 0 && _currentZoom < ZoomPercentages.Length -1)
+            {
+                _currentZoom++;
+                Zoom(ZoomPercentages[_currentZoom], x, y, skipTransitions || Abs(realDelta) <= TransitionThreshold);
+            }
+        } 
+        else
+        {
+            ZoomTo(Pow(ZoomSpeed, realDelta), x, y, skipTransitions || Abs(realDelta) <= TransitionThreshold);
+        }
     }
 
     /// <summary>
