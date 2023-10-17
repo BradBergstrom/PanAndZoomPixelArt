@@ -28,7 +28,7 @@ namespace AvaloniaDemo
 ```
 
 
-Now when zooming in and out, it will move up and down the array, starting at whereever "1" is added to the array. If there is no "1" in the array, then it will start at index 0. 
+Now when zooming in and out, it will move up and down the array, starting wherever "1" is added to the array. If there is no "1" in the array, then it will start at index 0. 
 
 If the ZoomPercentages array is not defined, the ZoomAndPan code works exactly as it did before. 
 
