@@ -1,4 +1,4 @@
-# PanAndZoom
+# PanAndZoomPixelArt
 A quick and dirty fork of ZoomAndPan for my own needs. The problem I had with the original code, is that it only allows you to control the zoom via a number multiplier. For zooming into pixel art, I need to specify exact sizes otherwize the pixels get very blurry. 
 
 This fork adds a new property ZoomPercentages that can be set in the constructor of the View like this:
