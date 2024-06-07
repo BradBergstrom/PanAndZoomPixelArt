@@ -32,7 +32,7 @@ Now when zooming in and out, it will move up and down the array, starting wherev
 
 If the ZoomPercentages array is not defined, the ZoomAndPan code works exactly as it did before. 
 
-Update [6/7/24]
+*Update [6/7/24]*
 I also added a new property "SpaceBarPan". When set to true, the space bar is required to be pressed before the ZoomBoarder can be panned. 
 
 ## License
